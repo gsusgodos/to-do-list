@@ -24,7 +24,7 @@ class TaskController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'completed' => 'boolean',
+            'completed' => 'sometimes|boolean',
         ]);
 
         $task = Task::create($validated);
@@ -39,7 +39,7 @@ class TaskController extends Controller
         $task = Task::find($id);
 
         if (!$task) {
-            return response()->json(['message' => 'Task not found'], 404);
+            return response()->json(['error' => 'Task not found'], 404);
         }
 
         return response()->json($task);
@@ -53,13 +53,13 @@ class TaskController extends Controller
         $task = Task::find($id);
 
         if (!$task) {
-            return response()->json(['message' => 'Task not found'], 404);
+            return response()->json(['error' => 'Task not found'], 404);
         }
 
         $validated = $request->validate([
             'title' => 'sometimes|required|string|max:255',
             'description' => 'nullable|string',
-            'completed' => 'boolean',
+            'completed' => 'sometimes|boolean',
         ]);
 
         $task->update($validated);
@@ -74,7 +74,7 @@ class TaskController extends Controller
         $task = Task::find($id);
 
         if (!$task) {
-            return response()->json(['message' => 'Task not found'], 404);
+            return response()->json(['error' => 'Task not found'], 404);
         }
 
         $task->delete();
