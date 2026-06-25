@@ -50,6 +50,7 @@ to-do-list/
 ```bash
 cd backend
 composer install
+npm install
 php artisan migrate
 php artisan serve
 ```
@@ -121,6 +122,7 @@ curl http://127.0.0.1:8000/api/tasks \
 - El frontend puede consumir los endpoints `/api/tasks` desde `http://127.0.0.1:5173`.
 - El backend debe estar en ejecución en `http://127.0.0.1:8000`.
 - El frontend tiene proxy a `/api` hacia el backend si se configura en `vite.config.js`.
+- Revisa `VERIFICACION.md` y `DOCUMENTACION.md` para información adicional del proyecto.
 
 ## Scripts útiles
 
